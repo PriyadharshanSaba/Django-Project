@@ -1,0 +1,355 @@
+
+{% block content %}
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Student Portal</title>
+        <meta charset="utf-8" />
+        <link rel='stylesheet' href="{% static 'css/bootstrap/bootstrap.min.css' type='text/css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/headtest.css' %}">
+        <script type="text/javascript" language="JavaScript" src="{% static 'js/USNPSW.js' %}"></script>
+
+
+      <script type="text/javascript">
+      if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+          location.replace("{{ 'headtest_mobile' }}");
+      }
+      else if (screen.width <= 699) {
+          document.location = "{{ 'headtest_mobile' }}";
+      }
+      </script>
+
+<style>
+
+<style>
+html {margin: 0; height: 100%; overflow: hidden;image-rendering: -webkit-optimize-contrast;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 5px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    text-align: center;
+    position:relative;
+}
+
+.subm {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    margin: 5px 21px;
+    border: none;
+    cursor: pointer;
+    width: 65%;
+}
+
+.newu {
+    background-color: #4CAF50;
+    padding: 20px 25px;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 10px;
+
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position:fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    height: 100%; /* Full height */
+    width:auto;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.2s;
+    animation-name: fadeIn;
+    animation-duration: 0.2s
+}
+
+/* Modal Content */
+.modal-content {
+    position: absolute;
+    bottom: 0;
+    background-color: #fefefe;
+    width: 40%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    text-align:left;
+
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color:#f98006;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;
+    text_align: left;
+
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #f98006;
+    color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+    from {bottom: -300px; opacity: 0}
+    to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+
+
+
+
+
+
+h2.a {
+    z-index:2;
+    position: relative;
+    text-align: center;
+}
+div.logform {
+    z-index:1;
+    position:relative;
+    text-align:center;
+    height: 80px;
+    vertical-align: middle;
+}
+
+.logg {
+
+    position: fixed;
+    height: 200px;
+    width: 150px;
+}
+
+
+img.log{
+    position:absolute;
+    z-index=2;
+    min-width:64px;
+    max-width:65px;
+    min-height:64px;
+    max-height:65px;
+}
+
+.bb{
+    background-color:#666666;
+    background-image: url('{% static "/images/bglog.jpg" %}');
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100px 100px;
+}
+
+.bbimg{
+    position:fixed;
+    display:block;
+    image-rendering: -webkit-optimize-contrast;
+
+}
+
+.newregform{
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+    border:none;
+}
+
+
+
+    </style>
+
+
+
+</style>
+
+
+    </head>
+
+<!--    <body class="body" style="background-color:#f6f6f6">-->
+<!-- 862,330 =2.61| 688, 250 = 2.7 | 711,260 = 2.7  -->
+<!--  1440, 640 = 2.25 | 566,200= 2.83 | 935,380 = 2.46  -->
+<body style="background-color:#808080" >
+    <script>
+            $(document).ready(function () {
+                              var logTMargeSet = ($(window).height())/2.6;
+                              var logWset= ($(window).width())/2.25;
+                              $('.logg').css("margin-top",logTMargeSet+"px")
+                              $('.logg').css("margin-left",logWset+"px")
+                              });
+
+             $(document).ready(function () {
+                           var winHeight = ($(window).height());
+                           var winWid= ($(window).width());
+                            $('.bbimg').css("width", winWid+"px");
+                            $('.bbimg').css("height",winHeight + "px");
+                            $('.model').css("width","50 px");
+                        });
+
+            </script>
+        <div>
+<!--            <img src="{% static 'images/loggy.jpg' %}" class="bbimg">-->
+<!--       <img src="https://4.bp.blogspot.com/-t1Wna6-jaUQ/VMFPfbo1VfI/AAAAAAABbb4/x3AnyF-fOck/s0/Apple%2BBusiness_UHD.jpg" class="bbimg">-->
+
+        <img src="https://dl.dropboxusercontent.com/s/9uh6ydi139vn7fq/loggy.jpg?dl=00" class="bbimg">
+        <!--       -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+                                            filter: blur(5px);     -->
+        <div class="logg">
+        <div>
+        <form method="post" action="{{ 'login_redirection_stu.html' }}">
+            <input type="text" placeholder="USN" name="usn" id="loginID" required>{% csrf_token %}
+            <input type="password" placeholder="Password" name="psw" required>
+            <button type="submit" class="subm">Login</button><br>
+            <p style="text-align:center;"><font size="2"><a id ="myBtn" style="color:#4d4d4d;text-decoration:none;">Register</a></font></p>
+            </form>
+        </div>
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+<!--  outer layout of form   -->
+    <div style="margin-left:30%">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <left><div class="modal-header">
+            <span class="close"><br><br></span>
+        </div></left>
+        <div class="modal-body">
+            <br><br>
+            <div class="newregform">
+
+            <form method="post" action="{{ 'registerNewStudent.html' }}">
+                {% csrf_token %}
+                <h2 style="align:center;font-family:Lucida Console;font-style:italic">Hola!</h2>
+                <input type="text" placeholder="USN" name="newusn" id="newusn" required>
+                <input type="password" placeholder="Password" name="newpasw" id="pasw" required>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <div class="modal-footer">
+            <button class="newu" type="submit"><p style="margin-bottom:10px;text-align:center;">Sign Up<br></p></button>
+        </div>
+        </form>
+    </div>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+        </form>
+
+
+</div>
+</body>
+</html>
+
+<!--<script type="text/javascript" language="JavaScript" src="{% static 'js/incorrectUSNPSW_alert.js' %}"></script>-->
+
+{% endblock %}
