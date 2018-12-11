@@ -42,17 +42,17 @@ def fetchAndInsert(usn_id):
                         break
             except:
                 num1="Null"
-            
+
             try:
                 num2=num[1]
             except:
                 num2="Null"
-            
+
             try:
                 num3=num[2]
             except:
                 num3="Null"
-                    
+
         elif i==26:
             email=str(font.text)
             email=email.split(" ")
@@ -63,7 +63,7 @@ def fetchAndInsert(usn_id):
                     mail_id=email[z]
                     break
         i=i+1
-                        
+
     op_attends=br.open("http://45.112.202.150:9084/acdStdAttViewHndlr?txtAction=ListPage&txtSubAction=ViewList")
     soup = BeautifulSoup(op_attends.read(),"lxml")
     #subject_namelist = [None]*6

@@ -13,5 +13,3 @@ def verfMail(otp,toAdd,name):
     mail.sendmail(fromaddr,toaddrs,msg)
     mail.close()
     return
-
-

@@ -33,6 +33,3 @@ def verifica(usn):
         return fee[0]
     except:
         return 'Y'
-
-
-

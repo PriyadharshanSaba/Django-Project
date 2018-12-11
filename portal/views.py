@@ -11,6 +11,8 @@ from pyscri import studoinfo,verificaMail,detFromDB,addi,connDB
 from pyscri.teacha import teacha
 import csv
 import numpy
+from random import randint
+import smtplib
 
 
 conn_string = "host='localhost' dbname='webmini' user='pd' password='postgres'"
@@ -117,14 +119,32 @@ def attendanceFromDBMS(request):
     return render(request,'portal/attend_preRefresh.html',{'datas':[fet,ca,ch,cod,xnam,perAt]})   #x=( , ,[],[])
 
 
+####################### NEW USER #######################
+
+
+def checkForID(x):
+    if len(str(x)) == 10:
+        return 1
+    else:
+        return 0
+
+def checkIfExists(ID):
+    checkIT="SELECT * FROM login WHERE usn= %(id)s"
+    checkDATA={ 'id':ID }
+    cursor.execute(checkIT,checkDATA)
+    if cursor.fetchone():
+        return 1
+    else:
+        return 0
+
 #testmod.html   |   newRegMod
 def registerNewStudent(request):
     new_usrID = request.POST['newusn']
     new_usrID=new_usrID.upper()
     request.session['new_user_ID']=new_usrID
-    checkLen = check_login_details.checkForID(new_usrID)
+    checkLen = checkForID(new_usrID)
     if checkLen == 1:
-        check = check_login_details.checkIfExists(new_usrID)
+        check = checkIfExists(new_usrID)
         if check == 0:
             new_usrPass =request.POST['newpasw']
             request.session['newuserspass']=new_usrPass
@@ -138,6 +158,11 @@ def registerNewStudent(request):
 def headtestExists(request):
     #User already exists
     return render(request,'portal/headtest_exists.html')
+
+
+
+####################### NEW USER #######################
+
 
 
 def putmar(request):
@@ -205,8 +230,136 @@ def internalmar(request):
     return render(request,'portal/internalmar.html',{'datas':[x]})
 
 
+
+
+####################### SET UP NEW USER #######################
+
+
+
+
 def welcomeRedirect(request):
     return render(request,'portal/welcome_page.html')
+
+
+def fetchAndInsert(usn_id):
+    br = mechanize.Browser()
+    br.set_handle_robots(False)
+    br.open("http://45.112.202.148:9084/SISloginform")
+    br.select_form(nr=0)
+    login_usn = usn_id
+    br.form['txtUserName']=login_usn
+    br.form['txtPassword']=login_usn
+    sub = br.submit()
+    op=br.open("http://45.112.202.148:9084/SISWelcome.jsp")
+    soup = BeautifulSoup(op.read(),"lxml")
+    i=1
+    num1= "Null"
+    num2= "Null"
+    num3= "Null"
+    for font in soup.findAll('font',{'size':3}):
+        if i==2:
+            student_name = font.text
+            #student_name=student_name.upper()
+        elif i==24:
+            num = str(font.text)
+            #num = num.split()
+            try:
+                num = num.split(",")
+                num1=num[0].split(" ")
+                for c in range(0,len(num1)):
+                    if len(num1[c])==0 or num1[c]=='\r\n':
+                        pass
+                    else:
+                        num1=num1[c]
+                        break
+            except:
+                num1="Null"
+
+            try:
+                num2=num[1]
+            except:
+                num2="Null"
+
+            try:
+                num3=num[2]
+            except:
+                num3="Null"
+
+        elif i==26:
+            email=str(font.text)
+            email=email.split(" ")
+            for z in range(0,len(email)):
+                if len(email[z])==0 or email[z]=='\r\n':
+                    pass
+                else:
+                    mail_id=email[z]
+                    break
+        i=i+1
+
+    op_attends=br.open("http://45.112.202.148:9084/acdStdAttViewHndlr?txtAction=ListPage&txtSubAction=ViewList")
+    soup = BeautifulSoup(op_attends.read(),"lxml")
+    #subject_namelist = [None]*6
+    subject_codelist = [None]*6
+    i=0
+    j=0
+    for td in soup.findAll('td',{'width':'53%'}):
+        if j>0:
+            temp=td.text.split("   ")
+            temp=temp[0].split(" - ")
+            #subject_namelist[i]=temp[1]
+            subject_codelist[i]=temp[0]
+            i=i+1
+        j=j+1
+
+    subject_chlist = [None]*10
+    i=0
+    j=0
+    for td in soup.findAll('td',{'width':'9%'}):
+        if j>2 and j%2==0:
+            subject_chlist[i]=td.text
+            i=i+1
+        j=j+1
+
+    subject_calist = [None]*10
+    i=0
+    j=0
+    for td in soup.findAll('td',{'width':'8%'}):
+        if j>1:
+            subject_calist[i]=td.text
+            i=i+1
+        j=j+1
+
+    subject_attends = [None]*10
+    i=0
+    j=0
+    for td in soup.findAll('td',{'width':'18%'}):
+        if j>0:
+            subject_attends[i]=td.text
+            i=i+1
+        j=j+1
+    #return name,num,subject_codelist,subject_attends
+
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    #insert_userDAT="INSERT INTO STUD_DET VALUES (%(uid)s,%(uname)s,%(uphone1)s,%(uphone2)s,%(uphone3)s,%(umail)s)"
+    #usr_DATA={'uid':usn_id,'uname':student_name,'uphone1':num1,'uphone2':num2,'uphone3':num3,'umail':mail_id}
+    #cursor.execute(insert_userDAT,usr_DATA)
+    #cn.commit()
+    #setmarks="INSERT INTO ATTENDS VALUES (%(uusn)s,%(s1)s,%(s1ca)s,%(s1ch)s,%(s2)s,%(s2ca)s,%(s2ch)s,%(s3)s,%(s3ca)s,%(s3ch)s,%(s4)s,%(s4ca)s,%(s4ch)s,%(s5)s,%(s5ca)s,%(s5ch)s,%(s6)s,%(s6ca)s,%(s6ch)s);"
+    #marDATA={'uusn':usn_id,'s1':subject_codelist[0],'s1ca':subject_calist[0],'s1ch':subject_chlist[0],'s2':subject_codelist[1],'s2ca':subject_calist[1],'s2ch':subject_chlist[1],'s3':subject_codelist[2],'s3ca':subject_calist[2],'s3ch':subject_chlist[2],'s4':subject_codelist[3],'s4ca':subject_calist[3],'s4ch':subject_chlist[3],'s5':subject_codelist[4],'s5ca':subject_calist[4],'s5ch':subject_chlist[4],'s6':subject_codelist[5],'s6ca':subject_calist[5],'s6ch':subject_chlist[5]}
+    #cursor.execute(setmarks,marDATA)
+    #cn.commit()
+    return student_name,mail_id,num1,num2,num3
+
+
+def insertIntoRegister(usn,password):
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    insert_userDAT="INSERT INTO login VALUES (%(uid)s,%(uname)s);"
+    usr_DATA={'uid':usn,'uname':password}
+    cursor.execute(insert_userDAT,usr_DATA)
+    conn.commit()
+    return
 
 
 def welcomeNewRege(request):
@@ -214,10 +367,13 @@ def welcomeNewRege(request):
     request.session['cur_usn'] = newUSN
     newPASSWORD=request.session['newuserspass']
         #try:
-    setUpNewStudentData.insertIntoRegister(newUSN,newPASSWORD)
-    x=setUpNewStudentData.fetchAndInsert(newUSN)    #[student_name,mail_id,num1,num2,num3]
-    putMarksCustomSem.main_func(newUSN[-3:],newUSN[-3:],"s4")
-    oxo=setUpNewStudentData.generateMail(newUSN)
+    insertIntoRegister(newUSN,newPASSWORD)          #setUpNewStudentData.insertIntoRegister(newUSN,newPASSWORD)
+    x=fetchAndInsert(newUSN)    #x=setUpNewStudentData.fetchAndInsert(newUSN)    #[student_name,mail_id,num1,num2,num3]
+    print("\n\n\nHere\n\n")
+    print(x)
+    print("\n\n\n")
+    #putMarksCustomSem.main_func(newUSN[-3:],newUSN[-3:],"s4")
+    oxo=generateMail(newUSN)
     mai=verificaMail.verfMail(oxo,x[1],x[0])
     temp = str(x[1])
     temp=temp.split("@")
@@ -229,29 +385,73 @@ def welcomeNewRege(request):
         else:
             regd=regd+str(reg[r])
     regd=regd+"@"+temp[1]
-    cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
-    cursor=cn.cursor()
-    checkIT="UPDATE GENKY SET REGD_MAIL = %(rm)s WHERE USN=%(uid)s"
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    checkIT="UPDATE genky SET regd_mail = %(rm)s WHERE USN=%(uid)s"
     checkDATA={'rm':regd,'uid':newUSN.upper()}
     cursor.execute(checkIT,checkDATA)
-    cn.commit()
+    conn.commit()
     return render(request,'portal/new_reg_verfiy.html',{'datas':[x[0],regd]})
+
 
 
 def verifyUser(request):
     return render(request,'portal/verification_page.html')
 
+
+def generateMail(usn):
+    xo = randint(1000,9999)
+    ran = str(xo)
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    checkIT="INSERT INTO genky (usn,key,verf) VALUES (%(uid)s,%(key)s,%(ver)s)"
+    checkDATA={'uid':usn,'key':ran,'ver':'N'}
+    cursor.execute(checkIT,checkDATA)
+    conn.commit()
+    return ran
+
+
 def verification(request):
     #kgen=request.session['otp_key']
     usn=request.session['cur_usn']
     EntKey = request.POST['otp']
-    kgen = setUpNewStudentData.verifyCode(usn)
+    kgen = verifyCode(usn)
     if EntKey == kgen:
         setUpNewStudentData.verifiHit2(usn)
-        name=detFromDB.getName(usn)
+        q = "select name from login where usn= %(uid)s"
+        checkDATA={'uid':usn }
+        cursor.execute(q,checkDATA)
+        name= cursor.fetchone()
+        print("here\n\n\n\n\n")
+        print(name)
         return render(request,'portal/red.html',{'datas':[name]})
     else:
         return render(request,'portal/error.html',{'datas':kgen})
+
+
+def verifyCode(usn):    #from DB
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    checkIT="SELECT GKEY FROM GENKY WHERE USN = %(uid)s"
+    checkDATA={'uid':usn }
+    cursor.execute(checkIT,checkDATA)
+    otp = cursor.fetchone()
+    return otp[0]
+
+def verifiHit2(usn):
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    checkIT="UPDATE genky SET verf = 'Y' WHERE USN=%(uid)s"
+    checkDATA={'uid':usn.upper()}
+    cursor.execute(checkIT,checkDATA)
+    cn.commit()
+    return
+
+
+
+####################### Notes #######################
+
+
 
 
 def notes(request):
