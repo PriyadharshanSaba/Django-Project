@@ -42,33 +42,33 @@ def login_redirection_stu(request):
     cursor.execute(checkIT,checkDATA)
     acknowledgeUSER = cursor.fetchone()
     request.session['cur_usr_nam'] = acknowledgeUSER[1]
-    try:
+    #try:
+    #    if x_pass.strip()==(acknowledgeUSER[0]).strip():
+    #        return render(request,'portal/red.html',{'name':[acknowledgeUSER[1]]})
+    #except:
+    #    return render(request,'portal/headtest_incor.html')
+    try: #check for non registered users
         if x_pass.strip()==(acknowledgeUSER[0]).strip():
-            return render(request,'portal/red.html',{'name':[acknowledgeUSER[1]]})
+            verf_usr=verifica(x_id)
+            if verf_usr == 'Y':
+                return render(request,'portal/login_redirection_stu.html',{'name':[acnowledgeUSER[1]]})
+            else:
+                checkIT="SELECT name FROM login WHERE usn= %(susn)s"
+                checkDATA={'susn':x_id.upper()}
+                cursor.execute(checkIT,checkDATA)
+                sFullName=cursor.fetchone()
+                checkIT="SELECT regd_mail FROM genky WHERE USN= %(sn)s"
+                checkDATA={'sn':x_id.upper()}
+                cursor.execute(checkIT,checkDATA)
+                regdMail = cursor.fetchone()
+                return render(request,'portal/new_reg_verfiy.html',{'datas':[sFullName[0],regdMail[0]]}) #regdMail[0]
+
+        else:
+            return render(request,'portal/headtest_incorrect.html')
     except:
-        return render(request,'portal/headtest_incor.html')
-#        try: #check for non registered users
-#            if x_pass==acknowledgeUSER[0][1]:
-#                verf_usr=check_login_details.verifica(x_id)
-#                if verf_usr == 'Y':
-#                    return render(request,'portal/login_redirection_stu.html',{'name':[x_id]})
-#                else:
-#                    checkIT="SELECT STUD_NAME FROM STUD_DET WHERE STUD_USN= %(susn)s"
-#                    checkDATA={'susn':x_id.upper()}
-#                    cursor.execute(checkIT,checkDATA)
-#                    sFullName=cursor.fetchone()
-#                    checkIT="SELECT REGD_MAIL FROM GENKY WHERE USN= %(sn)s"
-#                    checkDATA={'sn':x_id.upper()}
-#                    cursor.execute(checkIT,checkDATA)
-#                    regdMail = cursor.fetchone()
-#                    return render(request,'portal/new_reg_verfiy.html',{'datas':[sFullName[0],regdMail[0]]}) #regdMail[0]
-#
-#            else:
-#                return render(request,'portal/headtest_incorrect.html')
-#        except:
-#            return render(request,'portal/headtest_incorrect.html',{'alert':["Incorrect USN or Password"]})
-#    else:
-#        return render(request,'portal/headtest_incorrect.html',{'alert':["This ID is not register"]})
+        return render(request,'portal/headtest_incorrect.html',{'alert':["Incorrect USN or Password"]})
+    #else:
+    #    return render(request,'portal/headtest_incorrect.html',{'alert':["This ID is not register"]})
 
 
 
@@ -362,6 +362,7 @@ def insertIntoRegister(usn,password):
     return
 
 
+
 def welcomeNewRege(request):
     newUSN=request.session['new_user_ID']
     request.session['cur_usn'] = newUSN
@@ -369,9 +370,10 @@ def welcomeNewRege(request):
         #try:
     insertIntoRegister(newUSN,newPASSWORD)          #setUpNewStudentData.insertIntoRegister(newUSN,newPASSWORD)
     x=fetchAndInsert(newUSN)    #x=setUpNewStudentData.fetchAndInsert(newUSN)    #[student_name,mail_id,num1,num2,num3]
-    print("\n\n\nHere\n\n")
-    print(x)
-    print("\n\n\n")
+    q="UPDATE login SET name = %(nam)s WHERE USN=%(uid)s"
+    checkDATA={'nam':x[0],'uid':newUSN.upper()}
+    cursor.execute(q,checkDATA)
+    conn.commit()
     #putMarksCustomSem.main_func(newUSN[-3:],newUSN[-3:],"s4")
     oxo=generateMail(newUSN)
     mai=verificaMail.verfMail(oxo,x[1],x[0])
@@ -417,14 +419,14 @@ def verification(request):
     EntKey = request.POST['otp']
     kgen = verifyCode(usn)
     if EntKey == kgen:
-        setUpNewStudentData.verifiHit2(usn)
+        verifiHit2(usn)
         q = "select name from login where usn= %(uid)s"
         checkDATA={'uid':usn }
         cursor.execute(q,checkDATA)
         name= cursor.fetchone()
         print("here\n\n\n\n\n")
         print(name)
-        return render(request,'portal/red.html',{'datas':[name]})
+        return render(request,'portal/red.html',{'name':[name[0]]})
     else:
         return render(request,'portal/error.html',{'datas':kgen})
 
@@ -444,8 +446,21 @@ def verifiHit2(usn):
     checkIT="UPDATE genky SET verf = 'Y' WHERE USN=%(uid)s"
     checkDATA={'uid':usn.upper()}
     cursor.execute(checkIT,checkDATA)
-    cn.commit()
+    conn.commit()
     return
+
+def verifica(usn):
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    checkIT="SELECT verf FROM genky WHERE usn= %(id)s"
+    checkDATA={ 'id':usn.upper() }
+    try:
+        cursor.execute(checkIT,checkDATA)
+        fee=cursor.fetchone()
+        return fee[0]
+    except:
+        return 'Y'
+
 
 
 
