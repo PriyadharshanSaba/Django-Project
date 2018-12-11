@@ -25,6 +25,8 @@ urlpatterns = [
                url(r'^registerNewStudent.html$',views.registerNewStudent, name='just testing'),
 
                url(r'^putmarks.html$',views.putmar, name='testing marks module'),
+               url(r'internalmar.html',views.internalmar, name='testing marks module'),
+
                url(r'^welcome_page.html$',views.welcomeRedirect, name='redirect to welcome'),
                url(r'^headtest.html$', views.signOut , name='signing out'),
                url(r'^loadingRedirecting.html$', views.loadingRedirecting , name='temp website while leading'),

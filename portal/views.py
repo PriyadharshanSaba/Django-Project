@@ -39,8 +39,7 @@ def login_redirection_stu(request):
     checkDATA={'uid':x_id.upper()}
     cursor.execute(checkIT,checkDATA)
     acknowledgeUSER = cursor.fetchone()
-    print("here")
-    print(acknowledgeUSER[1])
+    request.session['cur_usr_nam'] = acknowledgeUSER[1]
     try:
         if x_pass.strip()==(acknowledgeUSER[0]).strip():
             return render(request,'portal/red.html',{'name':[acknowledgeUSER[1]]})
@@ -73,11 +72,8 @@ def login_redirection_stu(request):
 
 #red.html
 def red(request):
-    current_usn = "pd"
-    #current_usn = request.session['cur_usn']
-    #name=detFromDB.getName(current_usn)
-    #fetched = teacha.fetchFilxPath()
-    return render(request,'portal/red.html',{'datas':[[current_usn]]})#[name,len(fetched)]})
+    current_usn = request.session['cur_usr_nam']
+    return render(request,'portal/red.html',{'name':[current_usn]})#[name,len(fetched)]})
 
 
 def getAttendance(request):
@@ -198,6 +194,15 @@ def putmar(request):
         graphi = graphi + 1
     """
     return render(request,'portal/putmarks.html',{'datas':[x]}) #,{'datas':[cod,subject_names,finmar.tolist(),intern,extern,xarr,rangeMarks0x1,graph_X_Axis,myMarks]}) #8
+
+
+def internalmar(request):
+    uusn = request.session['cur_usn']
+    checkIT="SELECT * FROM internals WHERE usn= %(uid)s"
+    checkDATA={'uid': uusn }
+    cursor.execute(checkIT,checkDATA)
+    x = cursor.fetchone()
+    return render(request,'portal/internalmar.html',{'datas':[x]})
 
 
 def welcomeRedirect(request):

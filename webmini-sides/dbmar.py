@@ -1,5 +1,6 @@
 import psycopg2
 import csv
+from random import randint
 
 
 
@@ -36,7 +37,6 @@ def stu():
                 q = "insert into login values (%(usn)s,%(psw)s,%(name)s)"
                 passw = row[0][-3:]
                 checkDATA={'usn':row[0], 'psw':passw, 'name':row[1]}
-                print(checkDATA)
                 try:
                     cursor.execute(q,checkDATA)
                     conn.commit()
@@ -44,14 +44,31 @@ def stu():
                 except:
                     continue
 
-
-
+def internals():
+    i = 0
+    with open("6sem_mar.csv", 'r') as f:
+        for x in f:
+            print(x)
+            if i==0:
+                i=1
+                continue
+            else:
+                row = x.split(',')
+                q = "insert into internals values (%(usn)s,%(s1)s,%(s2)s,%(s3)s,%(s4)s,%(s5)s,%(l1)s,%(l2)s)"
+                checkDATA={'usn':row[0], 's1':randint(16, 20), 's2':randint(16, 20),'s3':randint(16, 20),'s4':randint(16, 20),'s5':randint(16, 20),'l1':randint(16, 20),'l2':randint(16, 20)}
+                try:
+                    cursor.execute(q,checkDATA)
+                    conn.commit()
+                    print("done")
+                except:
+                    continue
 
 conn_string = "host='localhost' dbname='webmini' user='pd' password='postgres'"
 conn = psycopg2.connect(conn_string)
 cursor=conn.cursor()
 
-stu()
+#stu()
 #sixthsem()
+internals()
 
 cursor.close()
