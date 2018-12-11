@@ -23,6 +23,7 @@ urlpatterns = [
                url(r'^red.html$', views.red , name='red'),
                url(r'^attend.html$', views.getAttendance, name='attendance'),
                url(r'^registerNewStudent.html$',views.registerNewStudent, name='just testing'),
+
                url(r'^putmarks.html$',views.putmar, name='testing marks module'),
                url(r'^welcome_page.html$',views.welcomeRedirect, name='redirect to welcome'),
                url(r'^headtest.html$', views.signOut , name='signing out'),
@@ -30,6 +31,7 @@ urlpatterns = [
                url(r'^welcomeNewRege.html$',views.welcomeNewRege, name='welcome new user'),
                url(r'^headtest_exists.html$', views.headtestExists, name='User already registered'),
                url(r'^error.html$', views.errorStudentAcc, name='no record'),
+
                url(r'^login_redirection_stu.html$', views.login_redirection_stu, name='redirecting login students page'),
                url(r'^new_reg_verfiy.html$', views.verifyUser , name='mail verification'),
                url(r'^verification_page.html$',views.verification , name='verification'),

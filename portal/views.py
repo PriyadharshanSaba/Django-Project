@@ -14,6 +14,8 @@ import numpy
 
 
 conn_string = "host='localhost' dbname='webmini' user='pd' password='postgres'"
+conn = psycopg2.connect(conn_string)
+cursor=conn.cursor()
 
 def index(request):
     return render(request,'admini/pro.html',{'errorcode':['0']})
@@ -26,22 +28,22 @@ def headtest_incor(request):
 
 def login_redirection_stu(request):
     x_id = request.POST['usn']
-#    request.session['cur_usn'] = x_id
+    request.session['cur_usn'] = x_id.upper()
     #checkLen = check_login_details.checkForID(x_id)
 #    if checkLen == 1:
     x_pass=request.POST['psw']
     #conn =psycopg2.connect(dbname='d1v03ol0gs21v5',user='mvsjgtxaoxwmgp',password='7b32ce61d22ce32052e233639448ab315708a2c78884b39932dc9ead1b26ef53',host='ec2-54-235-123-153.compute-1.amazonaws.com',port='5432')
-    conn = psycopg2.connect(conn_string)
-    cursor=conn.cursor()
     #checkIT="SELECT USR_PSW FROM student_reg WHERE USR_ID= %(uid)s"
-    checkIT="SELECT login_pass FROM login WHERE usn= %(uid)s"
+
+    checkIT="SELECT login_pass,name FROM login WHERE usn= %(uid)s"
     checkDATA={'uid':x_id.upper()}
     cursor.execute(checkIT,checkDATA)
     acknowledgeUSER = cursor.fetchone()
-
+    print("here")
+    print(acknowledgeUSER[1])
     try:
-        if x_pass.strip()==(acknowledgeUSER[0][0]).strip():
-            return render(request,'portal/red.html',{'name':[x_id]})
+        if x_pass.strip()==(acknowledgeUSER[0]).strip():
+            return render(request,'portal/red.html',{'name':[acknowledgeUSER[1]]})
     except:
         return render(request,'portal/headtest_incor.html')
 #        try: #check for non registered users
@@ -144,6 +146,14 @@ def headtestExists(request):
 
 def putmar(request):
     uusn = request.session['cur_usn']
+
+    checkIT="SELECT * FROM six_gpa WHERE usn= %(uid)s"
+    checkDATA={'uid': uusn }
+    cursor.execute(checkIT,checkDATA)
+    x = cursor.fetchall()
+    print(x)
+
+    """
     marks = putmarksintodb.getmar(uusn)
     subject_names= putmarksintodb.getSubNam(marks)
     cod = [None]*8
@@ -186,7 +196,8 @@ def putmar(request):
         #label[graphi] = ["." for lj in range(0,len(rangeMarks[graphi]))]
         graph_X_Axis[graphi] = len(rangeMarks0x1)
         graphi = graphi + 1
-    return render(request,'portal/putmarks.html',{'datas':[cod,subject_names,finmar.tolist(),intern,extern,xarr,rangeMarks0x1,graph_X_Axis,myMarks]}) #8
+    """
+    return render(request,'portal/putmarks.html',{'datas':[x]}) #,{'datas':[cod,subject_names,finmar.tolist(),intern,extern,xarr,rangeMarks0x1,graph_X_Axis,myMarks]}) #8
 
 
 def welcomeRedirect(request):

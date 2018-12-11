@@ -6,12 +6,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript">
-            
+
             function checkEmpty(){
                 var arr = {{ datas.1 }}
                 if(arr>= 1)
                 {
-                    
+
                     $("a[href='###']").attr('href', "{{ 'notes_ta.html' }}");
                 }
                 else
@@ -20,15 +20,15 @@
                     $("a[href='###']").attr('href', "{{ '#' }}");
                 }
             };
-        
+
         </script>
-        
+
 
 <style>
     html,body{
         background: #f1f1f1;
         font-family: 'Merriweather', sans-serif;
-        
+
     }
 .welc{
     text-align:center;
@@ -39,7 +39,7 @@ a.defaul{
     text-decoration:none;
     color:orange;
     padding:7px 30px;
-    
+
 }
 
 h1,a{
@@ -52,9 +52,9 @@ h1{
 a.defaul:hover{
     background-color:orange;
     color:white;
-    
-    
-    
+
+
+
 }
 a.brkr{
     color:orange;
@@ -160,9 +160,9 @@ div.actMenu{
 
 <body>
     <div class="welc">
-        <h1>Welcome, {{ datas.0.0 }}</h1>
+        <h1>Welcome, {{ name.0 }}</h1>
     <div class="lnk">
-    
+
         <div class="actMenu"> <a class="defaul" href="{{ 'static_attend_preRefresh' }}">Attendance</a><a class="brkr">|</a> </div>
         <div class="actMenu"> <a class="dropbtn1" onclick="markDrop()"  href="{{ '##' }}">Marks</a><a class="brkr">|</a>
             <div class="dropdown">
@@ -173,7 +173,7 @@ div.actMenu{
                 </div>
             </div>
         </div>
-        <div class="actMenu"><a class="defaul" onclick="checkEmpty()" href="{{ '###' }}">Notes</a><a class="brkr">|</a></div>
+      <!---  <div class="actMenu"><a class="defaul" onclick="checkEmpty()" href="{{ '###' }}">Notes</a><a class="brkr">|</a></div> -->
         <div class="actMenu"><a onclick="accDrop()" class="dropbtn2" href="{{ '##' }}">Account</a>
             <div class="dropdown">
                 <!--  Account      -->
@@ -185,23 +185,23 @@ div.actMenu{
         </div>
     </div>
 </div>
-    
+
     <script>
         /* When the user clicks on the button,
          toggle between hiding and showing the dropdown content */
     function accDrop() {
         document.getElementById("myDropdown").classList.toggle("show");
     }
-    
+
 
     function markDrop() {
         document.getElementById("marDropdown").classList.toggle("show");
     }
-    
-    
+
+
     window.onclick = function(event) {
         if (!event.target.matches('.dropbtn1')) {
-            
+
             var dropdowns = document.getElementsByClassName("dropdown-content-1");
             var i2;
             for (i2 = 0; i2 < dropdowns.length; i2++) {
@@ -212,7 +212,7 @@ div.actMenu{
             }
         }
         if (!event.target.matches('.dropbtn2')) {
-            
+
             var dropdowns = document.getElementsByClassName("dropdown-content-2");
             var i2;
             for (i2 = 0; i2 < dropdowns.length; i2++) {
@@ -222,12 +222,12 @@ div.actMenu{
                 }
             }
         }
-        
+
     }
 
-    
+
     </script>
-    
+
 
 
 
