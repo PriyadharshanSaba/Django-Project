@@ -130,7 +130,7 @@ def deleteRequest(request):
 def notes(request):
     fetched = teacha.fetchFilxPath()
     return render(request, 'ta/notes_ta.html',{'datas':fetched})
-    
+
 
 
 def upload_form(request):
@@ -182,3 +182,10 @@ def changeMail(request):
 
 
 
+
+
+def headtest_teacher(request):
+    return render(request,'ta/headtest_admini.html',{'datas':1})
+
+def teacher_home(request):
+    return render(request,'ta/home_ad.php',{'datas':1})

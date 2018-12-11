@@ -63,6 +63,8 @@ urlpatterns = [
                url(r'^profile_settings_ta$', views_ta.profile_settings, name='Registration'),
 
 
+
+
                url(r'^adm$', views_admini.adminiHome, name='admin home'),
                url(r'^ad.html$', views_admini.forgotLoginDetails, name='forgot details'),
                url(r'^home_ad.html',views_admini.loginHome, name = 'redirect to home'),

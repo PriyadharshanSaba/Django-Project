@@ -34,6 +34,35 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: attends; Type: TABLE; Schema: public; Owner: pd
+--
+
+CREATE TABLE public.attends (
+    usn character varying(50) NOT NULL,
+    s1 character varying(50),
+    s1ca character varying(50),
+    s1ch character varying(50),
+    s2 character varying(50),
+    s2ca character varying(50),
+    s2ch character varying(50),
+    s3 character varying(50),
+    s3ca character varying(50),
+    s3ch character varying(50),
+    s4 character varying(50),
+    s4ca character varying(50),
+    s4ch character varying(50),
+    s5 character varying(50),
+    s5ca character varying(50),
+    s5ch character varying(50),
+    s6 character varying(50),
+    s6ca character varying(50),
+    s6ch character varying(50)
+);
+
+
+ALTER TABLE public.attends OWNER TO pd;
+
+--
 -- Name: genky; Type: TABLE; Schema: public; Owner: pd
 --
 
@@ -79,6 +108,19 @@ CREATE TABLE public.login (
 ALTER TABLE public.login OWNER TO pd;
 
 --
+-- Name: login_teacher; Type: TABLE; Schema: public; Owner: pd
+--
+
+CREATE TABLE public.login_teacher (
+    staffid character varying(10) NOT NULL,
+    pass character varying(10),
+    name character varying(40)
+);
+
+
+ALTER TABLE public.login_teacher OWNER TO pd;
+
+--
 -- Name: six_gpa; Type: TABLE; Schema: public; Owner: pd
 --
 
@@ -105,6 +147,144 @@ CREATE TABLE public.six_gpa (
 
 
 ALTER TABLE public.six_gpa OWNER TO pd;
+
+--
+-- Data for Name: attends; Type: TABLE DATA; Schema: public; Owner: pd
+--
+
+COPY public.attends (usn, s1, s1ca, s1ch, s2, s2ca, s2ch, s3, s3ca, s3ch, s4, s4ca, s4ch, s5, s5ca, s5ch, s6, s6ca, s6ch) FROM stdin;
+1MV15CS001	15CS71 - Web Technology and its applications	28	28	15CS72 - Advanced Computer Architectures	29	31	15CS73 - Machine Learning	30	30	15CS743 - Information and Network Security	22	24	15CS744 - Unix System Programming	27	29	15CS753 - Digital Image Processing	27	30
+1MV15CS002	15CS71 - Web Technology and its applications	25	29	15CS72 - Advanced Computer Architectures	21	25	15CS73 - Machine Learning	24	27	15CS743 - Information and Network Security	29	30	15CS744 - Unix System Programming	23	28	15CS753 - Digital Image Processing	22	24
+1MV15CS003	15CS71 - Web Technology and its applications	23	26	15CS72 - Advanced Computer Architectures	28	29	15CS73 - Machine Learning	28	29	15CS743 - Information and Network Security	28	28	15CS744 - Unix System Programming	28	31	15CS753 - Digital Image Processing	21	25
+1MV15CS004	15CS71 - Web Technology and its applications	24	24	15CS72 - Advanced Computer Architectures	20	25	15CS73 - Machine Learning	25	26	15CS743 - Information and Network Security	22	26	15CS744 - Unix System Programming	27	30	15CS753 - Digital Image Processing	28	31
+1MV15CS005	15CS71 - Web Technology and its applications	25	29	15CS72 - Advanced Computer Architectures	24	24	15CS73 - Machine Learning	29	29	15CS743 - Information and Network Security	25	27	15CS744 - Unix System Programming	29	29	15CS753 - Digital Image Processing	27	31
+1MV15CS006	15CS71 - Web Technology and its applications	23	27	15CS72 - Advanced Computer Architectures	29	31	15CS73 - Machine Learning	28	31	15CS743 - Information and Network Security	23	25	15CS744 - Unix System Programming	28	30	15CS753 - Digital Image Processing	29	29
+1MV15CS007	15CS71 - Web Technology and its applications	21	25	15CS72 - Advanced Computer Architectures	22	25	15CS73 - Machine Learning	26	31	15CS743 - Information and Network Security	30	30	15CS744 - Unix System Programming	27	28	15CS753 - Digital Image Processing	28	29
+1MV15CS008	15CS71 - Web Technology and its applications	26	30	15CS72 - Advanced Computer Architectures	25	30	15CS73 - Machine Learning	21	26	15CS743 - Information and Network Security	20	24	15CS744 - Unix System Programming	28	30	15CS753 - Digital Image Processing	24	25
+1MV15CS009	15CS71 - Web Technology and its applications	24	26	15CS72 - Advanced Computer Architectures	26	30	15CS73 - Machine Learning	22	24	15CS743 - Information and Network Security	28	28	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	21	26
+1MV15CS010	15CS71 - Web Technology and its applications	25	25	15CS72 - Advanced Computer Architectures	20	25	15CS73 - Machine Learning	27	27	15CS743 - Information and Network Security	28	29	15CS744 - Unix System Programming	22	25	15CS753 - Digital Image Processing	25	26
+1MV15CS011	15CS71 - Web Technology and its applications	29	31	15CS72 - Advanced Computer Architectures	30	30	15CS73 - Machine Learning	27	31	15CS743 - Information and Network Security	29	31	15CS744 - Unix System Programming	25	26	15CS753 - Digital Image Processing	27	28
+1MV15CS012	15CS71 - Web Technology and its applications	31	31	15CS72 - Advanced Computer Architectures	26	31	15CS73 - Machine Learning	29	30	15CS743 - Information and Network Security	25	25	15CS744 - Unix System Programming	20	25	15CS753 - Digital Image Processing	28	31
+1MV15CS013	15CS71 - Web Technology and its applications	23	24	15CS72 - Advanced Computer Architectures	21	24	15CS73 - Machine Learning	25	26	15CS743 - Information and Network Security	19	24	15CS744 - Unix System Programming	24	27	15CS753 - Digital Image Processing	25	26
+1MV15CS014	15CS71 - Web Technology and its applications	28	29	15CS72 - Advanced Computer Architectures	22	26	15CS73 - Machine Learning	25	27	15CS743 - Information and Network Security	22	24	15CS744 - Unix System Programming	21	24	15CS753 - Digital Image Processing	26	27
+1MV15CS015	15CS71 - Web Technology and its applications	31	31	15CS72 - Advanced Computer Architectures	30	31	15CS73 - Machine Learning	31	31	15CS743 - Information and Network Security	26	29	15CS744 - Unix System Programming	27	31	15CS753 - Digital Image Processing	24	24
+1MV15CS016	15CS71 - Web Technology and its applications	25	25	15CS72 - Advanced Computer Architectures	26	28	15CS73 - Machine Learning	23	26	15CS743 - Information and Network Security	24	27	15CS744 - Unix System Programming	26	27	15CS753 - Digital Image Processing	20	25
+1MV15CS017	15CS71 - Web Technology and its applications	22	25	15CS72 - Advanced Computer Architectures	25	28	15CS73 - Machine Learning	25	29	15CS743 - Information and Network Security	26	29	15CS744 - Unix System Programming	27	31	15CS753 - Digital Image Processing	22	26
+1MV15CS018	15CS71 - Web Technology and its applications	25	25	15CS72 - Advanced Computer Architectures	22	25	15CS73 - Machine Learning	28	31	15CS743 - Information and Network Security	25	25	15CS744 - Unix System Programming	24	29	15CS753 - Digital Image Processing	23	28
+1MV15CS019	15CS71 - Web Technology and its applications	23	24	15CS72 - Advanced Computer Architectures	25	25	15CS73 - Machine Learning	19	24	15CS743 - Information and Network Security	23	26	15CS744 - Unix System Programming	26	30	15CS753 - Digital Image Processing	27	30
+1MV15CS020	15CS71 - Web Technology and its applications	24	29	15CS72 - Advanced Computer Architectures	29	30	15CS73 - Machine Learning	24	29	15CS743 - Information and Network Security	24	28	15CS744 - Unix System Programming	21	26	15CS753 - Digital Image Processing	23	24
+1MV15CS021	15CS71 - Web Technology and its applications	30	30	15CS72 - Advanced Computer Architectures	24	24	15CS73 - Machine Learning	25	30	15CS743 - Information and Network Security	22	26	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	24	27
+1MV15CS022	15CS71 - Web Technology and its applications	23	26	15CS72 - Advanced Computer Architectures	26	30	15CS73 - Machine Learning	24	26	15CS743 - Information and Network Security	25	28	15CS744 - Unix System Programming	25	28	15CS753 - Digital Image Processing	23	28
+1MV15CS023	15CS71 - Web Technology and its applications	24	24	15CS72 - Advanced Computer Architectures	26	30	15CS73 - Machine Learning	30	31	15CS743 - Information and Network Security	26	26	15CS744 - Unix System Programming	23	28	15CS753 - Digital Image Processing	29	29
+1MV15CS024	15CS71 - Web Technology and its applications	23	24	15CS72 - Advanced Computer Architectures	22	24	15CS73 - Machine Learning	26	26	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	27	31	15CS753 - Digital Image Processing	29	30
+1MV15CS025	15CS71 - Web Technology and its applications	28	29	15CS72 - Advanced Computer Architectures	20	25	15CS73 - Machine Learning	28	31	15CS743 - Information and Network Security	24	28	15CS744 - Unix System Programming	31	31	15CS753 - Digital Image Processing	22	24
+1MV15CS026	15CS71 - Web Technology and its applications	20	24	15CS72 - Advanced Computer Architectures	29	30	15CS73 - Machine Learning	22	27	15CS743 - Information and Network Security	22	24	15CS744 - Unix System Programming	24	28	15CS753 - Digital Image Processing	22	25
+1MV15CS027	15CS71 - Web Technology and its applications	23	27	15CS72 - Advanced Computer Architectures	21	25	15CS73 - Machine Learning	28	28	15CS743 - Information and Network Security	25	25	15CS744 - Unix System Programming	25	25	15CS753 - Digital Image Processing	28	31
+1MV15CS028	15CS71 - Web Technology and its applications	19	24	15CS72 - Advanced Computer Architectures	25	25	15CS73 - Machine Learning	25	28	15CS743 - Information and Network Security	24	24	15CS744 - Unix System Programming	29	29	15CS753 - Digital Image Processing	27	27
+1MV15CS029	15CS71 - Web Technology and its applications	27	30	15CS72 - Advanced Computer Architectures	27	29	15CS73 - Machine Learning	26	30	15CS743 - Information and Network Security	24	27	15CS744 - Unix System Programming	30	30	15CS753 - Digital Image Processing	25	28
+1MV15CS030	15CS71 - Web Technology and its applications	30	30	15CS72 - Advanced Computer Architectures	22	27	15CS73 - Machine Learning	22	25	15CS743 - Information and Network Security	24	27	15CS744 - Unix System Programming	26	26	15CS753 - Digital Image Processing	24	26
+1MV15CS031	15CS71 - Web Technology and its applications	24	25	15CS72 - Advanced Computer Architectures	28	31	15CS73 - Machine Learning	23	28	15CS743 - Information and Network Security	24	27	15CS744 - Unix System Programming	22	27	15CS753 - Digital Image Processing	22	26
+1MV15CS032	15CS71 - Web Technology and its applications	29	31	15CS72 - Advanced Computer Architectures	22	25	15CS73 - Machine Learning	26	27	15CS743 - Information and Network Security	24	27	15CS744 - Unix System Programming	28	28	15CS753 - Digital Image Processing	25	28
+1MV15CS033	15CS71 - Web Technology and its applications	25	30	15CS72 - Advanced Computer Architectures	28	31	15CS73 - Machine Learning	23	27	15CS743 - Information and Network Security	28	29	15CS744 - Unix System Programming	28	30	15CS753 - Digital Image Processing	26	26
+1MV15CS034	15CS71 - Web Technology and its applications	29	31	15CS72 - Advanced Computer Architectures	26	26	15CS73 - Machine Learning	30	30	15CS743 - Information and Network Security	26	27	15CS744 - Unix System Programming	30	30	15CS753 - Digital Image Processing	29	31
+1MV15CS035	15CS71 - Web Technology and its applications	26	31	15CS72 - Advanced Computer Architectures	24	25	15CS73 - Machine Learning	23	28	15CS743 - Information and Network Security	30	31	15CS744 - Unix System Programming	28	28	15CS753 - Digital Image Processing	22	27
+1MV15CS036	15CS71 - Web Technology and its applications	21	24	15CS72 - Advanced Computer Architectures	23	25	15CS73 - Machine Learning	30	30	15CS743 - Information and Network Security	24	25	15CS744 - Unix System Programming	26	29	15CS753 - Digital Image Processing	28	29
+1MV15CS037	15CS71 - Web Technology and its applications	28	29	15CS72 - Advanced Computer Architectures	26	28	15CS73 - Machine Learning	28	28	15CS743 - Information and Network Security	29	29	15CS744 - Unix System Programming	20	25	15CS753 - Digital Image Processing	27	29
+1MV15CS038	15CS71 - Web Technology and its applications	22	25	15CS72 - Advanced Computer Architectures	28	29	15CS73 - Machine Learning	24	27	15CS743 - Information and Network Security	23	24	15CS744 - Unix System Programming	30	31	15CS753 - Digital Image Processing	26	30
+1MV15CS039	15CS71 - Web Technology and its applications	27	27	15CS72 - Advanced Computer Architectures	22	26	15CS73 - Machine Learning	19	24	15CS743 - Information and Network Security	29	29	15CS744 - Unix System Programming	20	25	15CS753 - Digital Image Processing	26	31
+1MV15CS040	15CS71 - Web Technology and its applications	27	31	15CS72 - Advanced Computer Architectures	25	25	15CS73 - Machine Learning	24	24	15CS743 - Information and Network Security	23	26	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	26	26
+1MV15CS041	15CS71 - Web Technology and its applications	23	27	15CS72 - Advanced Computer Architectures	26	27	15CS73 - Machine Learning	21	26	15CS743 - Information and Network Security	27	28	15CS744 - Unix System Programming	26	27	15CS753 - Digital Image Processing	21	26
+1MV15CS042	15CS71 - Web Technology and its applications	22	26	15CS72 - Advanced Computer Architectures	27	29	15CS73 - Machine Learning	26	27	15CS743 - Information and Network Security	20	25	15CS744 - Unix System Programming	24	27	15CS753 - Digital Image Processing	27	27
+1MV15CS043	15CS71 - Web Technology and its applications	23	25	15CS72 - Advanced Computer Architectures	19	24	15CS73 - Machine Learning	28	29	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	25	28
+1MV15CS044	15CS71 - Web Technology and its applications	26	27	15CS72 - Advanced Computer Architectures	25	26	15CS73 - Machine Learning	19	24	15CS743 - Information and Network Security	22	25	15CS744 - Unix System Programming	30	31	15CS753 - Digital Image Processing	23	25
+1MV15CS045	15CS71 - Web Technology and its applications	25	30	15CS72 - Advanced Computer Architectures	29	30	15CS73 - Machine Learning	24	27	15CS743 - Information and Network Security	31	31	15CS744 - Unix System Programming	23	26	15CS753 - Digital Image Processing	24	28
+1MV15CS046	15CS71 - Web Technology and its applications	29	30	15CS72 - Advanced Computer Architectures	26	29	15CS73 - Machine Learning	20	24	15CS743 - Information and Network Security	25	28	15CS744 - Unix System Programming	31	31	15CS753 - Digital Image Processing	28	29
+1MV15CS047	15CS71 - Web Technology and its applications	24	29	15CS72 - Advanced Computer Architectures	26	27	15CS73 - Machine Learning	29	31	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	20	24
+1MV15CS048	15CS71 - Web Technology and its applications	21	25	15CS72 - Advanced Computer Architectures	29	31	15CS73 - Machine Learning	29	31	15CS743 - Information and Network Security	26	31	15CS744 - Unix System Programming	25	25	15CS753 - Digital Image Processing	21	24
+1MV15CS049	15CS71 - Web Technology and its applications	27	28	15CS72 - Advanced Computer Architectures	20	25	15CS73 - Machine Learning	23	24	15CS743 - Information and Network Security	29	29	15CS744 - Unix System Programming	24	24	15CS753 - Digital Image Processing	24	24
+1MV15CS050	15CS71 - Web Technology and its applications	26	29	15CS72 - Advanced Computer Architectures	28	30	15CS73 - Machine Learning	21	25	15CS743 - Information and Network Security	23	28	15CS744 - Unix System Programming	23	25	15CS753 - Digital Image Processing	26	28
+1MV15CS051	15CS71 - Web Technology and its applications	21	24	15CS72 - Advanced Computer Architectures	29	30	15CS73 - Machine Learning	25	27	15CS743 - Information and Network Security	21	24	15CS744 - Unix System Programming	30	31	15CS753 - Digital Image Processing	24	29
+1MV15CS052	15CS71 - Web Technology and its applications	21	25	15CS72 - Advanced Computer Architectures	28	29	15CS73 - Machine Learning	27	28	15CS743 - Information and Network Security	28	28	15CS744 - Unix System Programming	26	31	15CS753 - Digital Image Processing	22	25
+1MV15CS053	15CS71 - Web Technology and its applications	23	25	15CS72 - Advanced Computer Architectures	28	29	15CS73 - Machine Learning	27	27	15CS743 - Information and Network Security	26	30	15CS744 - Unix System Programming	27	28	15CS753 - Digital Image Processing	25	27
+1MV15CS054	15CS71 - Web Technology and its applications	23	25	15CS72 - Advanced Computer Architectures	24	29	15CS73 - Machine Learning	26	27	15CS743 - Information and Network Security	24	25	15CS744 - Unix System Programming	28	29	15CS753 - Digital Image Processing	19	24
+1MV15CS055	15CS71 - Web Technology and its applications	23	24	15CS72 - Advanced Computer Architectures	24	27	15CS73 - Machine Learning	27	29	15CS743 - Information and Network Security	19	24	15CS744 - Unix System Programming	28	28	15CS753 - Digital Image Processing	24	24
+1MV15CS056	15CS71 - Web Technology and its applications	29	31	15CS72 - Advanced Computer Architectures	24	28	15CS73 - Machine Learning	29	29	15CS743 - Information and Network Security	29	30	15CS744 - Unix System Programming	28	29	15CS753 - Digital Image Processing	25	30
+1MV15CS057	15CS71 - Web Technology and its applications	28	28	15CS72 - Advanced Computer Architectures	23	24	15CS73 - Machine Learning	24	26	15CS743 - Information and Network Security	30	31	15CS744 - Unix System Programming	24	26	15CS753 - Digital Image Processing	28	31
+1MV15CS058	15CS71 - Web Technology and its applications	30	31	15CS72 - Advanced Computer Architectures	25	30	15CS73 - Machine Learning	23	28	15CS743 - Information and Network Security	24	26	15CS744 - Unix System Programming	30	30	15CS753 - Digital Image Processing	23	28
+1MV15CS059	15CS71 - Web Technology and its applications	26	30	15CS72 - Advanced Computer Architectures	29	29	15CS73 - Machine Learning	25	26	15CS743 - Information and Network Security	27	29	15CS744 - Unix System Programming	22	25	15CS753 - Digital Image Processing	24	25
+1MV15CS060	15CS71 - Web Technology and its applications	31	31	15CS72 - Advanced Computer Architectures	28	29	15CS73 - Machine Learning	21	25	15CS743 - Information and Network Security	24	24	15CS744 - Unix System Programming	28	28	15CS753 - Digital Image Processing	27	29
+1MV15CS061	15CS71 - Web Technology and its applications	28	29	15CS72 - Advanced Computer Architectures	23	25	15CS73 - Machine Learning	22	27	15CS743 - Information and Network Security	22	26	15CS744 - Unix System Programming	25	28	15CS753 - Digital Image Processing	27	28
+1MV15CS062	15CS71 - Web Technology and its applications	22	24	15CS72 - Advanced Computer Architectures	29	29	15CS73 - Machine Learning	22	24	15CS743 - Information and Network Security	24	26	15CS744 - Unix System Programming	24	27	15CS753 - Digital Image Processing	24	26
+1MV15CS063	15CS71 - Web Technology and its applications	19	24	15CS72 - Advanced Computer Architectures	22	24	15CS73 - Machine Learning	26	28	15CS743 - Information and Network Security	26	27	15CS744 - Unix System Programming	25	26	15CS753 - Digital Image Processing	26	26
+1MV15CS064	15CS71 - Web Technology and its applications	25	30	15CS72 - Advanced Computer Architectures	23	24	15CS73 - Machine Learning	31	31	15CS743 - Information and Network Security	27	28	15CS744 - Unix System Programming	26	27	15CS753 - Digital Image Processing	25	27
+1MV15CS065	15CS71 - Web Technology and its applications	28	30	15CS72 - Advanced Computer Architectures	21	25	15CS73 - Machine Learning	27	31	15CS743 - Information and Network Security	26	26	15CS744 - Unix System Programming	28	29	15CS753 - Digital Image Processing	24	29
+1MV15CS066	15CS71 - Web Technology and its applications	27	27	15CS72 - Advanced Computer Architectures	24	29	15CS73 - Machine Learning	19	24	15CS743 - Information and Network Security	24	27	15CS744 - Unix System Programming	21	24	15CS753 - Digital Image Processing	25	27
+1MV15CS067	15CS71 - Web Technology and its applications	31	31	15CS72 - Advanced Computer Architectures	26	31	15CS73 - Machine Learning	29	30	15CS743 - Information and Network Security	25	27	15CS744 - Unix System Programming	23	26	15CS753 - Digital Image Processing	20	24
+1MV15CS068	15CS71 - Web Technology and its applications	24	24	15CS72 - Advanced Computer Architectures	25	26	15CS73 - Machine Learning	25	27	15CS743 - Information and Network Security	21	26	15CS744 - Unix System Programming	19	24	15CS753 - Digital Image Processing	21	24
+1MV15CS069	15CS71 - Web Technology and its applications	21	24	15CS72 - Advanced Computer Architectures	24	24	15CS73 - Machine Learning	28	29	15CS743 - Information and Network Security	28	30	15CS744 - Unix System Programming	28	29	15CS753 - Digital Image Processing	25	25
+1MV15CS070	15CS71 - Web Technology and its applications	27	30	15CS72 - Advanced Computer Architectures	22	25	15CS73 - Machine Learning	26	30	15CS743 - Information and Network Security	24	28	15CS744 - Unix System Programming	23	24	15CS753 - Digital Image Processing	24	28
+1MV15CS071	15CS71 - Web Technology and its applications	27	30	15CS72 - Advanced Computer Architectures	31	31	15CS73 - Machine Learning	27	31	15CS743 - Information and Network Security	25	25	15CS744 - Unix System Programming	22	26	15CS753 - Digital Image Processing	28	29
+1MV15CS072	15CS71 - Web Technology and its applications	21	24	15CS72 - Advanced Computer Architectures	24	28	15CS73 - Machine Learning	20	24	15CS743 - Information and Network Security	25	28	15CS744 - Unix System Programming	21	25	15CS753 - Digital Image Processing	28	29
+1MV15CS073	15CS71 - Web Technology and its applications	26	28	15CS72 - Advanced Computer Architectures	25	25	15CS73 - Machine Learning	23	28	15CS743 - Information and Network Security	27	28	15CS744 - Unix System Programming	23	28	15CS753 - Digital Image Processing	23	24
+1MV15CS074	15CS71 - Web Technology and its applications	19	24	15CS72 - Advanced Computer Architectures	23	28	15CS73 - Machine Learning	21	26	15CS743 - Information and Network Security	23	24	15CS744 - Unix System Programming	29	30	15CS753 - Digital Image Processing	30	30
+1MV15CS075	15CS71 - Web Technology and its applications	21	26	15CS72 - Advanced Computer Architectures	28	30	15CS73 - Machine Learning	26	28	15CS743 - Information and Network Security	25	25	15CS744 - Unix System Programming	23	28	15CS753 - Digital Image Processing	29	31
+1MV15CS076	15CS71 - Web Technology and its applications	26	27	15CS72 - Advanced Computer Architectures	30	31	15CS73 - Machine Learning	26	31	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	19	24
+1MV15CS077	15CS71 - Web Technology and its applications	29	31	15CS72 - Advanced Computer Architectures	31	31	15CS73 - Machine Learning	30	30	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	30	30
+1MV15CS078	15CS71 - Web Technology and its applications	22	26	15CS72 - Advanced Computer Architectures	22	26	15CS73 - Machine Learning	21	26	15CS743 - Information and Network Security	28	31	15CS744 - Unix System Programming	26	30	15CS753 - Digital Image Processing	24	25
+1MV15CS079	15CS71 - Web Technology and its applications	22	26	15CS72 - Advanced Computer Architectures	27	28	15CS73 - Machine Learning	25	27	15CS743 - Information and Network Security	25	27	15CS744 - Unix System Programming	26	30	15CS753 - Digital Image Processing	29	29
+1MV15CS080	15CS71 - Web Technology and its applications	22	25	15CS72 - Advanced Computer Architectures	23	26	15CS73 - Machine Learning	23	27	15CS743 - Information and Network Security	29	29	15CS744 - Unix System Programming	26	28	15CS753 - Digital Image Processing	29	29
+1MV15CS081	15CS71 - Web Technology and its applications	25	30	15CS72 - Advanced Computer Architectures	24	28	15CS73 - Machine Learning	23	28	15CS743 - Information and Network Security	27	31	15CS744 - Unix System Programming	24	25	15CS753 - Digital Image Processing	27	29
+1MV15CS082	15CS71 - Web Technology and its applications	30	31	15CS72 - Advanced Computer Architectures	26	28	15CS73 - Machine Learning	27	31	15CS743 - Information and Network Security	25	27	15CS744 - Unix System Programming	31	31	15CS753 - Digital Image Processing	28	29
+1MV15CS083	15CS71 - Web Technology and its applications	21	25	15CS72 - Advanced Computer Architectures	24	27	15CS73 - Machine Learning	21	25	15CS743 - Information and Network Security	30	30	15CS744 - Unix System Programming	26	26	15CS753 - Digital Image Processing	30	31
+1MV15CS084	15CS71 - Web Technology and its applications	26	30	15CS72 - Advanced Computer Architectures	22	27	15CS73 - Machine Learning	26	27	15CS743 - Information and Network Security	24	24	15CS744 - Unix System Programming	27	30	15CS753 - Digital Image Processing	30	30
+1MV15CS085	15CS71 - Web Technology and its applications	29	30	15CS72 - Advanced Computer Architectures	23	26	15CS73 - Machine Learning	27	27	15CS743 - Information and Network Security	23	24	15CS744 - Unix System Programming	29	29	15CS753 - Digital Image Processing	22	27
+1MV15CS086	15CS71 - Web Technology and its applications	27	28	15CS72 - Advanced Computer Architectures	24	29	15CS73 - Machine Learning	23	25	15CS743 - Information and Network Security	26	26	15CS744 - Unix System Programming	22	24	15CS753 - Digital Image Processing	31	31
+1MV15CS087	15CS71 - Web Technology and its applications	28	29	15CS72 - Advanced Computer Architectures	23	28	15CS73 - Machine Learning	29	29	15CS743 - Information and Network Security	24	24	15CS744 - Unix System Programming	28	29	15CS753 - Digital Image Processing	28	31
+1MV15CS088	15CS71 - Web Technology and its applications	28	28	15CS72 - Advanced Computer Architectures	25	27	15CS73 - Machine Learning	20	25	15CS743 - Information and Network Security	26	28	15CS744 - Unix System Programming	22	27	15CS753 - Digital Image Processing	26	31
+1MV15CS089	15CS71 - Web Technology and its applications	27	29	15CS72 - Advanced Computer Architectures	21	26	15CS73 - Machine Learning	27	28	15CS743 - Information and Network Security	29	29	15CS744 - Unix System Programming	29	31	15CS753 - Digital Image Processing	28	28
+1MV15CS090	15CS71 - Web Technology and its applications	29	30	15CS72 - Advanced Computer Architectures	25	26	15CS73 - Machine Learning	25	29	15CS743 - Information and Network Security	26	29	15CS744 - Unix System Programming	20	25	15CS753 - Digital Image Processing	22	27
+1MV15CS091	15CS71 - Web Technology and its applications	20	24	15CS72 - Advanced Computer Architectures	19	24	15CS73 - Machine Learning	25	28	15CS743 - Information and Network Security	20	25	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	27	27
+1MV15CS092	15CS71 - Web Technology and its applications	30	31	15CS72 - Advanced Computer Architectures	31	31	15CS73 - Machine Learning	29	30	15CS743 - Information and Network Security	24	24	15CS744 - Unix System Programming	26	27	15CS753 - Digital Image Processing	28	30
+1MV15CS093	15CS71 - Web Technology and its applications	25	28	15CS72 - Advanced Computer Architectures	23	27	15CS73 - Machine Learning	22	25	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	19	24	15CS753 - Digital Image Processing	27	28
+1MV15CS094	15CS71 - Web Technology and its applications	25	29	15CS72 - Advanced Computer Architectures	22	26	15CS73 - Machine Learning	24	28	15CS743 - Information and Network Security	21	24	15CS744 - Unix System Programming	25	28	15CS753 - Digital Image Processing	24	29
+1MV15CS095	15CS71 - Web Technology and its applications	25	27	15CS72 - Advanced Computer Architectures	28	31	15CS73 - Machine Learning	19	24	15CS743 - Information and Network Security	28	30	15CS744 - Unix System Programming	26	30	15CS753 - Digital Image Processing	21	25
+1MV15CS096	15CS71 - Web Technology and its applications	22	26	15CS72 - Advanced Computer Architectures	23	24	15CS73 - Machine Learning	23	25	15CS743 - Information and Network Security	23	26	15CS744 - Unix System Programming	21	26	15CS753 - Digital Image Processing	23	27
+1MV15CS097	15CS71 - Web Technology and its applications	21	25	15CS72 - Advanced Computer Architectures	25	29	15CS73 - Machine Learning	28	31	15CS743 - Information and Network Security	26	26	15CS744 - Unix System Programming	23	26	15CS753 - Digital Image Processing	26	30
+1MV15CS098	15CS71 - Web Technology and its applications	25	25	15CS72 - Advanced Computer Architectures	27	31	15CS73 - Machine Learning	26	31	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	28	29	15CS753 - Digital Image Processing	22	26
+1MV15CS099	15CS71 - Web Technology and its applications	24	28	15CS72 - Advanced Computer Architectures	25	30	15CS73 - Machine Learning	22	24	15CS743 - Information and Network Security	24	25	15CS744 - Unix System Programming	24	29	15CS753 - Digital Image Processing	28	30
+1MV15CS100	15CS71 - Web Technology and its applications	20	24	15CS72 - Advanced Computer Architectures	25	28	15CS73 - Machine Learning	24	26	15CS743 - Information and Network Security	21	26	15CS744 - Unix System Programming	25	30	15CS753 - Digital Image Processing	26	29
+1MV15CS101	15CS71 - Web Technology and its applications	31	31	15CS72 - Advanced Computer Architectures	27	31	15CS73 - Machine Learning	21	25	15CS743 - Information and Network Security	21	25	15CS744 - Unix System Programming	30	30	15CS753 - Digital Image Processing	25	29
+1MV15CS102	15CS71 - Web Technology and its applications	24	24	15CS72 - Advanced Computer Architectures	26	28	15CS73 - Machine Learning	28	29	15CS743 - Information and Network Security	27	27	15CS744 - Unix System Programming	26	27	15CS753 - Digital Image Processing	23	26
+1MV15CS103	15CS71 - Web Technology and its applications	22	26	15CS72 - Advanced Computer Architectures	22	27	15CS73 - Machine Learning	27	29	15CS743 - Information and Network Security	22	24	15CS744 - Unix System Programming	25	28	15CS753 - Digital Image Processing	20	25
+1MV15CS104	15CS71 - Web Technology and its applications	27	31	15CS72 - Advanced Computer Architectures	23	27	15CS73 - Machine Learning	26	28	15CS743 - Information and Network Security	24	26	15CS744 - Unix System Programming	26	31	15CS753 - Digital Image Processing	24	26
+1MV15CS105	15CS71 - Web Technology and its applications	19	24	15CS72 - Advanced Computer Architectures	25	29	15CS73 - Machine Learning	25	27	15CS743 - Information and Network Security	26	26	15CS744 - Unix System Programming	23	27	15CS753 - Digital Image Processing	29	31
+1MV15CS106	15CS71 - Web Technology and its applications	26	27	15CS72 - Advanced Computer Architectures	28	31	15CS73 - Machine Learning	25	30	15CS743 - Information and Network Security	22	27	15CS744 - Unix System Programming	26	28	15CS753 - Digital Image Processing	21	25
+1MV15CS107	15CS71 - Web Technology and its applications	24	24	15CS72 - Advanced Computer Architectures	28	29	15CS73 - Machine Learning	22	25	15CS743 - Information and Network Security	30	31	15CS744 - Unix System Programming	26	28	15CS753 - Digital Image Processing	28	28
+1MV15CS108	15CS71 - Web Technology and its applications	25	25	15CS72 - Advanced Computer Architectures	27	28	15CS73 - Machine Learning	21	24	15CS743 - Information and Network Security	21	25	15CS744 - Unix System Programming	30	31	15CS753 - Digital Image Processing	25	29
+1MV15CS109	15CS71 - Web Technology and its applications	25	28	15CS72 - Advanced Computer Architectures	24	24	15CS73 - Machine Learning	24	26	15CS743 - Information and Network Security	25	25	15CS744 - Unix System Programming	23	25	15CS753 - Digital Image Processing	29	29
+1MV15CS110	15CS71 - Web Technology and its applications	25	28	15CS72 - Advanced Computer Architectures	29	31	15CS73 - Machine Learning	22	25	15CS743 - Information and Network Security	26	31	15CS744 - Unix System Programming	29	30	15CS753 - Digital Image Processing	26	31
+1MV15CS111	15CS71 - Web Technology and its applications	24	26	15CS72 - Advanced Computer Architectures	25	29	15CS73 - Machine Learning	25	29	15CS743 - Information and Network Security	22	25	15CS744 - Unix System Programming	28	28	15CS753 - Digital Image Processing	27	30
+1MV15CS112	15CS71 - Web Technology and its applications	27	31	15CS72 - Advanced Computer Architectures	29	29	15CS73 - Machine Learning	23	25	15CS743 - Information and Network Security	27	31	15CS744 - Unix System Programming	24	24	15CS753 - Digital Image Processing	20	24
+1MV15CS113	15CS71 - Web Technology and its applications	22	24	15CS72 - Advanced Computer Architectures	22	24	15CS73 - Machine Learning	28	31	15CS743 - Information and Network Security	24	26	15CS744 - Unix System Programming	23	24	15CS753 - Digital Image Processing	21	24
+1MV15CS114	15CS71 - Web Technology and its applications	28	31	15CS72 - Advanced Computer Architectures	25	25	15CS73 - Machine Learning	23	26	15CS743 - Information and Network Security	27	29	15CS744 - Unix System Programming	21	25	15CS753 - Digital Image Processing	22	25
+1MV15CS115	15CS71 - Web Technology and its applications	21	25	15CS72 - Advanced Computer Architectures	27	28	15CS73 - Machine Learning	28	29	15CS743 - Information and Network Security	21	26	15CS744 - Unix System Programming	24	27	15CS753 - Digital Image Processing	24	26
+1MV15CS116	15CS71 - Web Technology and its applications	27	28	15CS72 - Advanced Computer Architectures	24	28	15CS73 - Machine Learning	27	27	15CS743 - Information and Network Security	25	26	15CS744 - Unix System Programming	29	31	15CS753 - Digital Image Processing	19	24
+1MV15CS117	15CS71 - Web Technology and its applications	19	24	15CS72 - Advanced Computer Architectures	24	27	15CS73 - Machine Learning	23	26	15CS743 - Information and Network Security	24	25	15CS744 - Unix System Programming	29	30	15CS753 - Digital Image Processing	28	29
+1MV15CS118	15CS71 - Web Technology and its applications	24	27	15CS72 - Advanced Computer Architectures	28	31	15CS73 - Machine Learning	26	29	15CS743 - Information and Network Security	28	29	15CS744 - Unix System Programming	24	28	15CS753 - Digital Image Processing	24	28
+1MV15CS119	15CS71 - Web Technology and its applications	27	28	15CS72 - Advanced Computer Architectures	24	26	15CS73 - Machine Learning	22	24	15CS743 - Information and Network Security	25	30	15CS744 - Unix System Programming	21	24	15CS753 - Digital Image Processing	30	31
+1MV15CS120	15CS71 - Web Technology and its applications	22	25	15CS72 - Advanced Computer Architectures	21	25	15CS73 - Machine Learning	29	31	15CS743 - Information and Network Security	24	29	15CS744 - Unix System Programming	26	31	15CS753 - Digital Image Processing	26	28
+1MV15CS121	15CS71 - Web Technology and its applications	25	26	15CS72 - Advanced Computer Architectures	22	27	15CS73 - Machine Learning	21	26	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	28	30	15CS753 - Digital Image Processing	28	29
+1MV15CS122	15CS71 - Web Technology and its applications	22	27	15CS72 - Advanced Computer Architectures	25	29	15CS73 - Machine Learning	24	28	15CS743 - Information and Network Security	23	26	15CS744 - Unix System Programming	23	25	15CS753 - Digital Image Processing	23	26
+1MV15CS123	15CS71 - Web Technology and its applications	24	24	15CS72 - Advanced Computer Architectures	24	29	15CS73 - Machine Learning	25	28	15CS743 - Information and Network Security	20	25	15CS744 - Unix System Programming	25	30	15CS753 - Digital Image Processing	28	28
+1MV15CS124	15CS71 - Web Technology and its applications	28	28	15CS72 - Advanced Computer Architectures	25	27	15CS73 - Machine Learning	25	27	15CS743 - Information and Network Security	27	30	15CS744 - Unix System Programming	25	26	15CS753 - Digital Image Processing	22	27
+1MV15CS125	15CS71 - Web Technology and its applications	23	28	15CS72 - Advanced Computer Architectures	26	27	15CS73 - Machine Learning	22	27	15CS743 - Information and Network Security	25	28	15CS744 - Unix System Programming	26	27	15CS753 - Digital Image Processing	28	30
+1MV15CS126	15CS71 - Web Technology and its applications	21	25	15CS72 - Advanced Computer Architectures	23	26	15CS73 - Machine Learning	26	30	15CS743 - Information and Network Security	23	28	15CS744 - Unix System Programming	27	29	15CS753 - Digital Image Processing	22	24
+1MV15CS127	15CS71 - Web Technology and its applications	25	28	15CS72 - Advanced Computer Architectures	26	31	15CS73 - Machine Learning	25	30	15CS743 - Information and Network Security	28	28	15CS744 - Unix System Programming	27	31	15CS753 - Digital Image Processing	22	24
+1MV15CS128	15CS71 - Web Technology and its applications	26	31	15CS72 - Advanced Computer Architectures	22	24	15CS73 - Machine Learning	23	24	15CS743 - Information and Network Security	25	30	15CS744 - Unix System Programming	25	30	15CS753 - Digital Image Processing	23	24
+1MV15CS129	15CS71 - Web Technology and its applications	23	25	15CS72 - Advanced Computer Architectures	30	31	15CS73 - Machine Learning	24	26	15CS743 - Information and Network Security	19	24	15CS744 - Unix System Programming	31	31	15CS753 - Digital Image Processing	20	24
+1MV15CS130	15CS71 - Web Technology and its applications	24	25	15CS72 - Advanced Computer Architectures	20	24	15CS73 - Machine Learning	28	30	15CS743 - Information and Network Security	22	26	15CS744 - Unix System Programming	27	27	15CS753 - Digital Image Processing	27	28
+\.
+
 
 --
 -- Data for Name: genky; Type: TABLE DATA; Schema: public; Owner: pd
@@ -370,10 +550,20 @@ COPY public.login (usn, login_pass, name) FROM stdin;
 
 
 --
+-- Data for Name: login_teacher; Type: TABLE DATA; Schema: public; Owner: pd
+--
+
+COPY public.login_teacher (staffid, pass, name) FROM stdin;
+1MV15TH001	001	Narendra Babu
+\.
+
+
+--
 -- Data for Name: six_gpa; Type: TABLE DATA; Schema: public; Owner: pd
 --
 
 COPY public.six_gpa (usn, name, inm1, exm1, inm2, exm2, inm3, exm3, inm4, exm4, inm5, exm5, inm6, exm6, inl1, exl1, inl2, exl2) FROM stdin;
+1MV15IS001	AASHI	18	72	17	42	16	55	17	41	20	41	19	41	15	65	20	47
 1MV15CS061	 MOHAMMED  MAHABOOB  KHAN 	18	59	15	43	17	76	17	51	14	41	19	51	18	76	20	79\n
 1MV15CS062	 MOHAMMED  SHAKEEL  B 	17	54	16	32	17	48	18	42	17	41	18	48	20	70	20	77\n
 1MV15CS064	 NAELA  TARANNUM 	16	29	17	50	15	46	17	29	16	33	18	33	19	73	19	76\n
@@ -497,6 +687,14 @@ COPY public.six_gpa (usn, name, inm1, exm1, inm2, exm2, inm3, exm3, inm4, exm4, 
 
 
 --
+-- Name: attends attends_pkey; Type: CONSTRAINT; Schema: public; Owner: pd
+--
+
+ALTER TABLE ONLY public.attends
+    ADD CONSTRAINT attends_pkey PRIMARY KEY (usn);
+
+
+--
 -- Name: internals internals_pkey; Type: CONSTRAINT; Schema: public; Owner: pd
 --
 
@@ -510,6 +708,14 @@ ALTER TABLE ONLY public.internals
 
 ALTER TABLE ONLY public.login
     ADD CONSTRAINT login_pkey PRIMARY KEY (usn);
+
+
+--
+-- Name: login_teacher login_teacher_pkey; Type: CONSTRAINT; Schema: public; Owner: pd
+--
+
+ALTER TABLE ONLY public.login_teacher
+    ADD CONSTRAINT login_teacher_pkey PRIMARY KEY (staffid);
 
 
 --

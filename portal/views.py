@@ -523,9 +523,9 @@ def changeMail(request):
 
 def static_attend_preRefresh(request):
     usn = request.session['cur_usn']
-    cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
-    cursor=cn.cursor()
-    checkIT="SELECT * FROM ATTENDS WHERE USN_ID = %(uid)s"
+    #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
+    #cursor=cn.cursor()
+    checkIT="SELECT * FROM ATTENDS WHERE usn = %(uid)s"
     checkDATA={'uid':usn}
     cursor.execute(checkIT,checkDATA)
     fet = cursor.fetchone()
@@ -546,7 +546,8 @@ def static_attend_preRefresh(request):
     cat=map(float,ca)
     cheld=map(float,ch)
     perAt=(numpy.round((numpy.divide(cat,cheld)),4))*100
-    xnam=studoinfo.subcodeToSubname(cod)
+    xnam=cod
+    #xnam=studoinfo.subcodeToSubname(cod)
     mes=addi.generateMessage_attend(perAt,xnam)
     return render(request,'portal/static_attend_preRefresh.html',{'datas':[fet,ca,ch,cod,xnam,perAt,mes]})
 

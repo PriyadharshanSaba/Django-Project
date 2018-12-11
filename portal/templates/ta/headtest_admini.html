@@ -1,36 +1,12 @@
 {% block content %}
 {% load staticfiles %}
 
-<?php
-session_start();
-$conn=pg_connect("host=localhost dbname=webmini user=pd password=xxxx");
-if(isset($_POST['login'])) {
-	$username = pg_escape_string($conn,$_POST['adminNAME']);
-	$password = pg_escape_string($conn,$_POST['adminPSW']);
-	$sql = "SELECT * FROM login_teacher WHERE staffid='$username' AND pass='$password'";
-	$sql1 = "SELECT name FROM login_teacher WHERE staffid='$username' AND pass='$password'";
 
-
-	$result = pg_query($conn, $sql);
-	$result1 = pg_query($conn, $sql1);
-	$row=pg_fetch_assoc($result1);
-	$b=$row['name'];
-	if (pg_num_rows($result) == 1) {
-		$_SESSION['message'] = "You are now logged in";
-		$_SESSION['username'] = $username;
-		$_SESSION['name']=$b;
-		header("location:home_ad.php");
-}
-else {
-$_SESSION['message'] = "Username/password combination incorrect";
-
-}
-}
-?>
 <html lang="en">
     <head>
         <title>Admin</title>
         <meta charset="utf-8" />
+        <link rel='stylesheet' href="{% static 'css/bootstrap/bootstrap.min.css' type='text/css' %}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -67,9 +43,9 @@ $_SESSION['message'] = "Username/password combination incorrect";
 
         <div class="logg">
         <div>
-        <form method="post" action="headtest_admini.php">
+        <form method="post" action="{{ 'headtest_admini.php' }}">
             <br>
-            <input type="text" placeholder="Username" name="adminNAME" id="adminNAME" required>{% csrf_token %}
+            <input type="text" placeholder="Username" name="adminNAME" id="adminNAME" required>
             <input type="password" placeholder="Password" name="adminPSW" required>
             <button type="submit" class="subm" name="login">Login</button><br><br>
             <p style="text-align:center;"><font size="2"><a href="{{ 'ad.html' }}" style="color:#4d4d4d;text-decoration:none;">Forgot Password?</a></font></p>
@@ -81,5 +57,6 @@ $_SESSION['message'] = "Username/password combination incorrect";
 </body>
 </html>
 
-{% endblock %}
 <!--<script type="text/javascript" language="JavaScript" src="{% static 'js/incorrectUSNPSW_alert.js' %}"></script>-->
+
+{% endblock %}

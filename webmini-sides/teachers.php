@@ -1,5 +1,12 @@
 <?php
 $db=pg_connect("host=localhost dbname=webmini user=pd password=xxxx");
+if($db)
+{
+  echo "success";
+}
+else
+  echo "fuck";
+
 $message = '';
 if(isset($_POST["upload"]))
 {
@@ -84,5 +91,6 @@ $result = pg_query($db, $query);
 <br/>
 <p>&copy 2018-2019 Sri Krishna Ghee</p>
 </div>
+
 </body>
 </html>
