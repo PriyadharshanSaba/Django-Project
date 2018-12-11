@@ -111,7 +111,7 @@ ALTER TABLE public.six_gpa OWNER TO pd;
 --
 
 COPY public.genky (usn, key, verf, regd_mail) FROM stdin;
-1MV15CS113	5886	N	imf**zz@yahoo.com
+1MV15CS083	5871	Y	rav**********19@gmail.com
 \.
 
 
@@ -365,7 +365,7 @@ COPY public.login (usn, login_pass, name) FROM stdin;
 1MV15CS129	129	 YASHASWINI  KUMAR 
 1MV15CS130	130	 MILIND  DAFTARI 
 1MV15CS113	113	\N
-1MV15CS083	083	\N
+1MV15CS083	083	 Ravil Kashyap 
 \.
 
 
@@ -525,7 +525,7 @@ ALTER TABLE ONLY public.six_gpa
 --
 
 ALTER TABLE ONLY public.genky
-    ADD CONSTRAINT genky_usn_fkey FOREIGN KEY (usn) REFERENCES public.login(usn);
+    ADD CONSTRAINT genky_usn_fkey FOREIGN KEY (usn) REFERENCES public.login(usn) ON DELETE CASCADE;
 
 
 --
