@@ -13,33 +13,37 @@ import csv
 import numpy
 
 
-conn_string = "host='localhost' dbname='my_database' user='postgres' password='secret'"
+conn_string = "host='localhost' dbname='webmini' user='pd' password='postgres'"
 
 def index(request):
-    return render(request,'admini/pro.html')
+    return render(request,'admini/pro.html',{'errorcode':['0']})
 
 def student(request):
-    return render(request,'portal/headtest.html')
+    return render(request,'portal/headtest.html',{'errorcode':['1']})
+
+def headtest_incor(request):
+    return render(request,'portal/headtest_incor.html')
 
 def login_redirection_stu(request):
     x_id = request.POST['usn']
-    x_id=x_id.upper()
 #    request.session['cur_usn'] = x_id
     #checkLen = check_login_details.checkForID(x_id)
 #    if checkLen == 1:
     x_pass=request.POST['psw']
-    conn =psycopg2.connect(dbname='d1v03ol0gs21v5',user='mvsjgtxaoxwmgp',password='7b32ce61d22ce32052e233639448ab315708a2c78884b39932dc9ead1b26ef53',host='ec2-54-235-123-153.compute-1.amazonaws.com',port='5432')
+    #conn =psycopg2.connect(dbname='d1v03ol0gs21v5',user='mvsjgtxaoxwmgp',password='7b32ce61d22ce32052e233639448ab315708a2c78884b39932dc9ead1b26ef53',host='ec2-54-235-123-153.compute-1.amazonaws.com',port='5432')
+    conn = psycopg2.connect(conn_string)
     cursor=conn.cursor()
-    checkIT="SELECT USR_PSW FROM student_reg WHERE USR_ID= %(uid)s"
-    checkDATA={'uid':x_id}
+    #checkIT="SELECT USR_PSW FROM student_reg WHERE USR_ID= %(uid)s"
+    checkIT="SELECT login_pass FROM login WHERE usn= %(uid)s"
+    checkDATA={'uid':x_id.upper()}
     cursor.execute(checkIT,checkDATA)
-    acknowledgeUSER = cursor.fetchall()
-    #print x_pass.strip() == (acknowledgeUSER[0][0]).strip()
-    #print x_pass.strip()+">>"+acknowledgeUSER[0][0].strip()
-    if x_pass.strip()==(acknowledgeUSER[0][0]).strip():
-        return render(request,'portal/red.html',{'name':[x_id]})
-    else:
-        return render(request,'admini/pro.html') #,{'name':[x_id]})
+    acknowledgeUSER = cursor.fetchone()
+
+    try:
+        if x_pass.strip()==(acknowledgeUSER[0][0]).strip():
+            return render(request,'portal/red.html',{'name':[x_id]})
+    except:
+        return render(request,'portal/headtest_incor.html')
 #        try: #check for non registered users
 #            if x_pass==acknowledgeUSER[0][1]:
 #                verf_usr=check_login_details.verifica(x_id)

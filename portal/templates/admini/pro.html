@@ -3,6 +3,11 @@
 <!DOCTYPE html>
     <head>
         <title>Index</title>
+
+        {% if errorcode is '1' %}
+          <script>alert("Wrong Username/password")</script>
+        {% endif %}
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -52,7 +57,6 @@ div.lnk{
 
 
 <body>
-
 
     <div class="welc">
         <h1>M V I T&nbsp;&nbsp;B Y T E</h1>

@@ -18,6 +18,7 @@ urlpatterns = [
                url(r'^index_mobile',views.index_mob, name='index mob'),
                url(r'^m$', views.index, name='main'),
 
+               url(r'^headtest_incor.html', views.headtest_incor , name='index'),
                url(r'^log.html', views.student , name='index'),
                url(r'^red.html$', views.red , name='red'),
                url(r'^attend.html$', views.getAttendance, name='attendance'),

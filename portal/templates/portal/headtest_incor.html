@@ -286,6 +286,7 @@ img.log{
                                             filter: blur(5px);     -->
         <div class="logg">
         <div>
+          <script>alert("Wrong Username/password" )</script>
         <form method="post" action="{{ 'login_redirection_stu.html' }}">
             <input type="text" placeholder="USN" name="usn" id="loginID" required>{% csrf_token %}
             <input type="password" placeholder="Password" name="psw" required>
