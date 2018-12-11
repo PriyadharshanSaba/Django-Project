@@ -432,7 +432,7 @@ def verification(request):
 def verifyCode(usn):    #from DB
     #cn = psycopg2.connect(user='root', password='Rocky@2009', database='studentportal')
     #cursor=cn.cursor()
-    checkIT="SELECT GKEY FROM GENKY WHERE USN = %(uid)s"
+    checkIT="SELECT KEY FROM GENKY WHERE USN = %(uid)s"
     checkDATA={'uid':usn }
     cursor.execute(checkIT,checkDATA)
     otp = cursor.fetchone()
