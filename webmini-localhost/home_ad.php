@@ -34,7 +34,7 @@ h4.modules {
     <!-- <h4 class='modules'><a href="teachers.php" class='modules'>Upload Marks Previous Sem marks </a><h4> -->
     <a href="teachers.php" class="btn btn-info btn-lg" role="button">Upload Marks Previous Sem marks</a><br><br>
     <a href="login.php" class="btn btn-info btn-lg" role="button">View Attendance/Marks</a><br><br>
-    <a href="rem.php" class="btn btn-info btn-lg" role="button">Remove Student Record</a>
+<!--    <a href="rem.php" class="btn btn-info btn-lg" role="button">Remove Student Record</a> -->
   </center>
 </body>
 </html>

@@ -4,7 +4,7 @@ $conn=pg_connect("host=localhost dbname=webmini user=pd password=xxxx");
 if(isset($_POST['login']))
 {
 	$usn = pg_escape_string($conn,$_POST['usn']);
-	$sql = "DELETE FROM login WHERE usn=$usn";
+	$sql = "DELETE FROM login WHERE usn='$usn';";
 	$result = pg_query($conn, $sql);
 
 	$_SESSION['usn'] = $usn;
@@ -49,7 +49,7 @@ height:40px;
             <br>
             <input type="text" placeholder="USN" name="usn" id="usn" required class="form-control" />
 			</br>
-            <button type="submit" class="btn btn-primary" name"login">Delete</button><br><br>
+            <button type="submit" class="btn btn-primary" id="login" name"login">Delete</button><br><br>
 
 </form>
 </center>
