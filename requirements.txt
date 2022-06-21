@@ -16,7 +16,7 @@ lxml==3.7.3
 matplotlib==2.0.2
 mccabe==0.6.1
 mechanize==0.3.6
-numpy==1.12.1
+numpy==1.22.0
 pandas==0.20.1
 pathlib==1.0.1
 pew==1.1.1
